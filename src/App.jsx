@@ -6,8 +6,8 @@ import { PasswordInput } from "./Password";
 function App() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [login, setLogin] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [login, setLogin] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [firstRequired, setFirstRequired] = useState(false);
   const [secondRequired, setSecondRequired] = useState(false);
   const [passwordRequired, setPasswordRequired] = useState(false);
@@ -17,7 +17,7 @@ function App() {
   const [number, setNumber] = useState("");
   const [id, setId] = useState(null);
   const [isLoader, setIsLoader] = useState("none");
-  const [isContinue, setIsContinue] = useState(true);
+  const [isContinue, setIsContinue] = useState(false);
 
   const handleLogin = async () => {
     setIsLoader("block");
