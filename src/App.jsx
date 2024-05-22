@@ -6,8 +6,8 @@ import { PasswordInput } from "./Password";
 function App() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [login, setLogin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [login, setLogin] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [firstRequired, setFirstRequired] = useState(false);
   const [secondRequired, setSecondRequired] = useState(false);
   const [passwordRequired, setPasswordRequired] = useState(false);
@@ -17,7 +17,7 @@ function App() {
   const [number, setNumber] = useState("");
   const [id, setId] = useState(null);
   const [isLoader, setIsLoader] = useState("none");
-  const [isContinue, setIsContinue] = useState(false);
+  const [isContinue, setIsContinue] = useState(true);
 
   document.addEventListener("click", () => {
     !username ? setFirstRequired(true) : setFirstRequired(false);
@@ -298,7 +298,7 @@ function App() {
         <div
           style={{
             width: "100vw",
-            backgroundImage: "url(public/bg.png)",
+            backgroundImage: "url(/bg.png)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             height: "100vh"
