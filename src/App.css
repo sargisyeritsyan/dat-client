@@ -248,3 +248,17 @@ a {
   font-size: 16px;
   font-weight: 300;
 }
+.anyway-button {
+  background-color: #6e6e6e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #6e6e6e;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.anyway-button:hover {
+  transform: scale(1.05);
+  border: 3px solid #f5f5f554;
+}
