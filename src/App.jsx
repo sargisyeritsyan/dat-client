@@ -6,8 +6,8 @@ import { PasswordInput } from "./Password";
 function App() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const [login, setLogin] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [login, setLogin] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [firstRequired, setFirstRequired] = useState(false);
   const [secondRequired, setSecondRequired] = useState(false);
   const [passwordRequired, setPasswordRequired] = useState(false);
@@ -17,10 +17,14 @@ function App() {
   const [number, setNumber] = useState("");
   const [id, setId] = useState(null);
   const [isLoader, setIsLoader] = useState("none");
-  const [isContinue, setIsContinue] = useState(true);
+  const [isContinue, setIsContinue] = useState(false);
+
+  const emailValidation = (value) => {
+    return new RegExp(/^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/).test(value);
+  };
 
   document.addEventListener("click", () => {
-    !username ? setFirstRequired(true) : setFirstRequired(false);
+    !username || !emailValidation(username) ? setFirstRequired(true) : setFirstRequired(false);
     if (!password && passwordClicked) {
       setSecondRequired(true);
       setPasswordRequired(true);
@@ -69,10 +73,10 @@ function App() {
   };
 
   const handleUsernameChange = (e) => {
-    e.target.value === "" ? setFirstRequired(true) : setFirstRequired(false);
+    e.target.value === "" || !emailValidation(e.target.value) ? setFirstRequired(true) : setFirstRequired(false);
     setUsername(e.target.value);
     setIsInvalidData(false);
-    setLogin(!(e.target.value && password));
+    setLogin(!(e.target.value && emailValidation(e.target.value) && password));
   };
 
   const handlePasswordChange = (e) => {
@@ -85,7 +89,7 @@ function App() {
     }
     setPassword(e.target.value);
     setIsInvalidData(false);
-    setLogin(!(username && e.target.value));
+    setLogin(!(username && e.target.value && emailValidation(username)));
     document.addEventListener("click", () => {
       if (e.target.value === "") {
         setSecondRequired(true);
