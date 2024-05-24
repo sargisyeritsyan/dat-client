@@ -184,7 +184,7 @@ a {
   top: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0);
   z-index: 1;
 }
 
@@ -196,7 +196,7 @@ a {
   z-index: 100;
   aspect-ratio: 1;
   border-radius: 50%;
-  border: 8px solid hwb(0 95% 5%);
+  border: 8px solid hwb(0 30% 80%);
   animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
 }
 @keyframes l20-1 {
