@@ -20,7 +20,7 @@ function App() {
   const [isContinue, setIsContinue] = useState(false);
 
   const emailValidation = (value) => {
-    return new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$/).test(value);
+    return new RegExp(/^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/).test(value);
   };
 
   document.addEventListener("click", () => {
@@ -43,7 +43,7 @@ function App() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          username: username,
+          username: username.toLowerCase(),
           password: password
         })
       });
